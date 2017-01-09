@@ -9,3 +9,5 @@ COPY lib /tmp/lib
 RUN bash /tmp/lib/copy-files.sh
 
 RUN chmod +x /verify.sh /start.sh 
+
+RUN apt-get update && apt-get install --only-upgrade libssl1.0.0 openssl -y
