@@ -27,6 +27,16 @@ make
 make install
 cd ../
 
+wget -c https://www.openssl.org/source/openssl-1.0.2l.tar.gz
+tar xf openssl-1.0.2l.tar.gz
+cd /usr/local/openssl-1.0.2l
+./config
+make depend
+make
+make test
+make install
+cd ../
+
 # download nginx
 wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
 tar xvzf nginx-$NGINX_VERSION.tar.gz
@@ -37,7 +47,7 @@ cd nginx-$NGINX_VERSION
   --prefix=$PREFIX --user=$NGINX_USER --group=$NGINX_USER \
   --with-http_ssl_module --without-http_scgi_module \
   --without-http_uwsgi_module --without-http_fastcgi_module \
-  --with-zlib=../zlib-1.2.11
+  --with-zlib=../zlib-1.2.11 --with-openssl=../openssl-1.0.2l
 
 make install
 
