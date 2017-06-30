@@ -19,6 +19,14 @@ mkdir -p $BUILD_DIR
 mkdir -p $PREFIX
 cd $BUILD_DIR
 
+wget http://zlib.net/zlib-1.2.11.tar.gz
+tar -zxf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
+./configure
+make
+sudo make install
+cd ../
+
 # download nginx
 wget http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz
 tar xvzf nginx-$NGINX_VERSION.tar.gz
@@ -28,7 +36,8 @@ cd nginx-$NGINX_VERSION
 ./configure \
   --prefix=$PREFIX --user=$NGINX_USER --group=$NGINX_USER \
   --with-http_ssl_module --without-http_scgi_module \
-  --without-http_uwsgi_module --without-http_fastcgi_module
+  --without-http_uwsgi_module --without-http_fastcgi_module \
+  --with-zlib=../zlib-1.2.11
 
 make install
 
