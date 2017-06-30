@@ -29,7 +29,7 @@ cd ../
 
 wget -c https://www.openssl.org/source/openssl-1.0.2l.tar.gz
 tar xf openssl-1.0.2l.tar.gz
-cd /usr/local/openssl-1.0.2l
+cd ./openssl-1.0.2l
 ./config
 make depend
 make
